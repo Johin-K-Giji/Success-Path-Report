@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),
@@ -16,6 +17,7 @@ type FormData = z.infer<typeof formSchema>;
 const HeroSection = () => {
   const [timeLeft, setTimeLeft] = useState({ minutes: 11, seconds: 46 });
   const [isSubmitting, setIsSubmitting] = useState(false);
+   const [fireAddToCart, setFireAddToCart] = useState(false);
 
   const formatDateOfBirth = (dateStr: string) => {
   const date = new Date(dateStr);
@@ -68,6 +70,23 @@ const onSubmit = async (data: FormData) => {
   setTimeout(() => {
     window.location.href = paymentUrl.toString();
   }, 500);
+
+
+    /* 🔥 FACEBOOK PIXEL — DO NOT CHANGE */
+  useFacebookPixel(
+    fireAddToCart
+      ? {
+          eventName: "AddToCart",
+          eventParams: {
+            content_name: "Success_Report_Product",
+            content_type: "product",
+            value: 697,
+            currency: "INR",
+          },
+        }
+      : undefined
+  );
+
 };
 
 
@@ -85,21 +104,19 @@ const onSubmit = async (data: FormData) => {
           {/* LEFT CONTENT */}
           <div className="text-center lg:text-left">
             <h1 className="font-display font-extrabold text-2xl md:text-5xl xl:text-6xl text-white leading-tight mb-4">
-              You’re Not Unlucky,
+             Aap unlucky nahi ho…
               <br />
               <span className="text-[#03C988] font-extrabold">
-                Your Energy Is Misaligned
+                Bas aapki energy misaligned chal rahi hai ⚡
               </span>
             </h1>
 
-            <p className="font-display font-bold text-2xl md:text-3xl text-white/95 mb-4">
-              Fix it before <span className="text-[#FFD717]">2026</span> slips
-              away
+            <p className="font-display font-bold text-2xl md:text-3xl text-[#FFD717] mb-4">
+              2026 ko slip mat hone dijiye
             </p>
 
             <p className="text-white/90 text-base md:text-lg font-medium max-w-xl mb-8">
-              Discover your next <strong>7-year success cycle</strong> with
-              personalized remedies inside the Success Path Report.
+              Apna next 7 saal ka <strong>success cycle jaaniye Success Path Report ke saath.</strong>
             </p>
 
             {/* FLOATING BOOK */}
@@ -133,11 +150,11 @@ const onSubmit = async (data: FormData) => {
             {/* OFFER HEADER */}
             <div className="text-center mb-5">
               <span className="inline-block text-xs font-bold px-4 py-1 rounded-full bg-[#03C988]/25 text-[#3f463d] mb-2">
-                Limited Time Discount
+                 Limited Time Offer
               </span>
 
               <h3 className="text-2xl md:text-3xl font-extrabold text-[#1e1e1e]">
-                Get Instant Access
+               Success Path Report
               </h3>
 
               <div className="mt-2 inline-flex items-center gap-2 px-4 py-1 rounded-full bg-red-100 text-red-600 text-sm font-bold">
@@ -156,7 +173,7 @@ const onSubmit = async (data: FormData) => {
                 ₹697
               </p>
               <p className="text-xs text-gray-500 font-medium">
-                One-time payment • Instant access
+                1-time payment • WhatsApp pe instant access
               </p>
             </div>
 
@@ -212,29 +229,41 @@ const onSubmit = async (data: FormData) => {
 
               {/* CTA BUTTON – TEMPTING */}
               <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileTap={{ scale: 0.95 }}
-                animate={{
-                  boxShadow: [
-                    "0 0 0 rgba(172,188,162,0)",
-                    "0 0 25px rgba(172,188,162,0.6)",
-                    "0 0 0 rgba(172,188,162,0)",
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="w-full mt-3 py-4 rounded-xl font-extrabold text-black text-lg shadow-lg"
-                style={{ backgroundColor: "#03C988" }}
-              >
-                {isSubmitting ? "Processing..." : "Unlock My Report"}
-              </motion.button>
+  type="submit"
+  disabled={isSubmitting}
+  whileTap={{ scale: 0.95 }}
+  animate={{
+    boxShadow: [
+      "0 0 0 rgba(172,188,162,0)",
+      "0 0 25px rgba(172,188,162,0.6)",
+      "0 0 0 rgba(172,188,162,0)",
+    ],
+  }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="w-full mt-3 py-4 rounded-xl font-extrabold text-black text-lg shadow-lg flex flex-col items-center justify-center gap-1"
+  style={{ backgroundColor: "#03C988" }}
+>
+  {isSubmitting ? (
+    "Processing..."
+  ) : (
+    <>
+      <span className="text-lg font-extrabold">
+        Mera Report Unlock Karein
+      </span>
+      <span className="text-lg font-extrabold text-black/80">
+        <span className="line-through mr-1 font-sm text-black/50">₹1399</span> ₹697
+      </span>
+    </>
+  )}
+</motion.button>
+
 
               <p className="text-[11px] text-center text-gray-500 mt-2 font-medium">
-                🔒 Your details are 100% safe & never shared
+                🔒 Aapka data 100% safe hai. Kabhi share nahi hota
               </p>
             </form>
           </motion.div>

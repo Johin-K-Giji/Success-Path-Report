@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 const CreatorSection = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   const scrollToForm = () => {
     document
@@ -14,105 +14,108 @@ const CreatorSection = () => {
   return (
     <section
       ref={ref}
-      className="py-10 md:py-14"
-      style={{ backgroundColor: "#03C988" }}
+      className="py-6 md:py-8"
+      style={{ backgroundColor: "#000139" }}
     >
-      <div className="container mx-auto px-4 max-w-3xl">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-4 md:gap-6 items-start">
 
-        {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-6"
-        >
-          <span className="block text-xs font-bold tracking-widest uppercase text-[#000139] mb-2">
-            Meet the Creator
-          </span>
-
-          <h2 className="font-display text-xl md:text-2xl font-extrabold text-[#000139]">
-            The Mind Behind the Success Path Report
-          </h2>
-        </motion.div>
-
-        {/* IMAGE */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.4 }}
-          className="flex justify-center mb-6"
-        >
-          <img
-            src="./creator.png"
-            alt="Priyaa Btra – Creator of Success Path Report"
-            className="w-44 md:w-56 rounded-xl shadow-lg"
-          />
-        </motion.div>
-
-        {/* BIO (2 PARAGRAPHS) */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="text-center"
-        >
-          <p className="text-sm leading-relaxed text-[#000139]/85">
-            After spending over a decade in the IT industry working on global
-            technology projects, <strong>Priyaa Btra</strong> felt a deeper
-            calling toward purpose-driven work. That clarity arrived when her
-            Guru studied her numbers and said,
-            <span className="block mt-1 font-semibold italic text-[#000139]">
-              “Tum yahaan sabki madad karne aayi ho.”
-            </span>
-          </p>
-
-          <p className="text-sm leading-relaxed text-[#000139]/85 mt-4">
-            Since then, she has devoted her life to the ancient sciences of
-            <strong> Numerology</strong> and <strong>Swar Vigyan</strong>,
-            helping individuals align their energy across career,
-            relationships, health, and finances through practical tools like
-            the <strong>Success Path Report</strong>.
-          </p>
-        </motion.div>
-
-        {/* OFFER */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="text-center mt-8"
-        >
-          <p className="text-xs uppercase tracking-wide text-[#000139]/70 mb-1">
-            Limited Time Access
-          </p>
-
-          <p className="text-xs text-[#000139]/60 line-through">
-            Regular Price: ₹1,399
-          </p>
-
-          <p className="text-xl font-extrabold text-[#000139] mt-1">
-            Today: ₹697
-          </p>
-
-          <motion.button
-            onClick={scrollToForm}
-            whileTap={{ scale: 0.96 }}
-            className="mt-4 px-7 py-3 rounded-xl font-bold text-black shadow-lg"
-            style={{ backgroundColor: "#ffffff" }}
+          {/* LEFT COLUMN – IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.35 }}
+            className="hidden md:flex justify-center items-center mt-28"
           >
-            Get My Success Path Report
-          </motion.button>
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-white/10">
+              <img
+                src="./coach.JPG"
+                alt="Priyaa Btra – Creator of Success Path Report"
+                className="w-74 object-cover"
+              />
+            </div>
+          </motion.div>
 
-          <p className="text-[11px] text-[#000139]/60 mt-2">
-            One-time payment • Instant access
-          </p>
-        </motion.div>
+          {/* CONTENT COLUMN */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.35 }}
+            className="text-center md:text-left"
+          >
+            {/* TITLE */}
+            <h2 className="font-display text-xl md:text-2xl font-extrabold text-white leading-snug mb-3">
+              Hi, main{" "}
+              <span className="text-[#03C988]">Priyaa Btra</span> hoon —
+              <br />
+              Success Path Report ki creator ✨
+            </h2>
 
+            {/* MOBILE IMAGE */}
+            <div className="md:hidden flex justify-center mb-4">
+              <div className="rounded-xl overflow-hidden shadow-xl border border-white/10">
+                <img
+                  src="./coach.JPG"
+                  alt="Priyaa Btra – Creator of Success Path Report"
+                  className="w-64 object-cover"
+                />
+              </div>
+            </div>
+
+            {/* PARAGRAPH 1 */}
+            <p className="text-sm md:text-[15px] font-semibold leading-relaxed text-white/85 mb-3">
+              Mainne <strong>10+ saal IT industry</strong> mein global projects
+              handle kiye — deadlines, pressure aur high-performance life.
+              Wahin mujhe yeh clear dikha ki{" "}
+              <strong>
+                log mehnat toh karte hain, par phir bhi life mein same patterns
+                repeat hote rehte hain.
+              </strong>
+              Jab mere Guru ne kaha —
+              <span className="block mt-1 italic font-bold text-white">
+                “Aap yahan sabki madad karne aayi hain.”
+              </span>
+              wahi moment mera turning point ban gaya.
+            </p>
+
+            {/* PARAGRAPH 2 */}
+            <p className="text-sm md:text-[15px] font-semibold leading-relaxed text-white/85">
+              Tab se main <strong>Numerology</strong> aur{" "}
+              <strong>Swar Vigyan</strong> ko simple aur practical bana kar
+              logon ko <strong>career, money, relationship aur health</strong>{" "}
+              mein clarity aur alignment deti hoon.
+              <strong> Success Path Report</strong> ek personal success map hai —
+              jo batata hai <strong>block kaha hai, kyu hai</strong> aur
+              <strong> next 7 saal ka best cycle</strong> kaise unlock karna hai.
+            </p>
+
+            {/* CTA */}
+            <div className="mt-4">
+              <p className="text-xs text-white/60 line-through">
+                Regular Price: ₹1,399
+              </p>
+              <p className="text-lg font-extrabold text-white mb-2">
+                Today: ₹697
+              </p>
+
+              <motion.button
+                onClick={scrollToForm}
+                whileTap={{ scale: 0.96 }}
+                className="px-6 py-2.5 rounded-lg font-extrabold text-black shadow-lg text-sm md:text-base"
+                style={{ backgroundColor: "#03C988" }}
+              >
+                Get My Success Path Report
+              </motion.button>
+
+              <p className="text-[11px] text-white/60 mt-1">
+                One-time payment • Instant access
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default CreatorSection;
-
-

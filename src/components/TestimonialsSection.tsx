@@ -9,8 +9,8 @@ const testimonials = [
     avatar: "RG",
     messages: [
       { type: "sent", text: "Hi! I'm Priya from Occult Yogi. Just checking in how was your experience with the Success Path Report?" },
-      { type: "received", text: "Hi Priya! Thank you so much. The report was really good. I've been confused about switching jobs for months now, and this gave me such clarity on timing and energy blocks. I even followed one of the remedies and felt a shift in just a few days!" },
-      { type: "sent", text: "I'm so happy to hear that! Wishing you aligned growth ahead. Do stay connected 💫" },
+      { type: "received", text: "Main job switch ko leke months se stuck tha.Report ne timing + block dono clear kar diya.Remedy follow kiya aur kuch din mein mindset light feel hua." },
+      { type: "sent", text: "“Happy to hear that 💫 aligned growth ahead!" },
     ],
   },
   {
@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.5 }}
           className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-center text-black mb-10 md:mb-12"
         >
-          What Our Customers Are Saying
+        Customers kya bol rahe hain 
         </motion.h2>
 
         {/* Carousel */}

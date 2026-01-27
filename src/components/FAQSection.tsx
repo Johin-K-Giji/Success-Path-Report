@@ -5,29 +5,29 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "Will I be able to learn this science too?",
+    question: "Kya main ye science seekh sakta/sakti hoon?",
     answer:
-      "Yes! Priya Ji, a former IT professional turned energy guide, now teaches and simplifies this science for everyday life. If she could learn it from scratch, so can you step by step.",
+      "Haan. Priyaa ne bhi scratch se start kiya tha. Ye science step-by-step, simple tareeke se sikhayi jaati hai.",
   },
   {
-    question: "Does this science really work?",
+    question: "Kya ye sach mein work karta hai?",
     answer:
-      "Absolutely! Numerology and Swar Vigyan are ancient sciences that have been practiced for thousands of years. The Success Path Report combines these powerful systems to give you actionable insights tailored to your unique birth chart.",
+      "Jab aap report ke according action aur remedies follow karte hain, tab results kaafi strong aur visible hote hain.",
   },
   {
-    question: "How will I get my Success Path Report?",
+    question: "Report kab milega?",
     answer:
-      "After completing your purchase, you'll receive your personalized Success Path Report via email within 24-48 hours. The report will be a detailed PDF that you can download and keep forever.",
+      "Payment ke baad aapko WhatsApp par turant report mil jaayegi.",
   },
   {
-    question: "Is this report the same for everyone?",
+    question: "Kya sabka report same hota hai?",
     answer:
-      "No! Each report is uniquely generated based on your date of birth, name, and other personal factors. No two reports are ever the same.",
+      "Nahi. Har report aapke personal details ke hisaab se customized hoti hai. Isliye har report unique hota hai.",
   },
   {
-    question: "Will I get practical remedies or just theory?",
+    question: "Remedies practical milengi ya sirf theory?",
     answer:
-      "You'll get BOTH! The report includes deep insights into your life path along with practical, easy-to-follow remedies that you can start implementing immediately.",
+      "Sirf theory nahi. Is report mein practical steps aur easy remedies included hoti hain jo aap daily life mein follow kar sakte ho.",
   },
 ];
 
@@ -45,7 +45,7 @@ const FAQSection = () => {
           transition={{ duration: 0.5 }}
           className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-center text-off-white mb-10 md:mb-12"
         >
-          FAQS
+          FAQs
         </motion.h2>
 
         <div className="max-w-3xl mx-auto">
@@ -73,6 +73,7 @@ const FAQSection = () => {
                   )}
                 </span>
               </button>
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
@@ -82,7 +83,9 @@ const FAQSection = () => {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="faq-answer text-gray-400">{faq.answer}</p>
+                    <p className="faq-answer text-gray-400">
+                      {faq.answer}
+                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
